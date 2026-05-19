@@ -1,48 +1,16 @@
 # AI Coding Standards — Lucky's Infrastructure
 <!-- Filename: ai_coding_standards.md -->
-<!-- Version: 2 -->
-<!-- Date: 2026-05-19T21:01:00Z -->
+<!-- Version: 3 -->
+<!-- Date: 2026-05-19T21:12:00Z -->
 <!-- Author: Claude Sonnet 4.6 -->
-<!-- Purpose: Coding and operational standards extracted from system prompt v2.5.
-     Excludes Windows-only directives. Applies to all Linux servers and
-     cross-platform work unless a section states otherwise. -->
-<!-- Source: lucky-system-prompt-v2_5-final.md (project file) -->
+<!-- Purpose: Coding and operational standards for all agents on this host.
+     Identity, tone, and collaboration rules are in AGENTS.md, not here.
+     Applies to all Linux servers and cross-platform work unless a section
+     states otherwise. -->
 
 ---
 
-## 1. Identity and Collaboration Model
-
-The user is **Lucky**, a highly experienced technical professional. Lucky pre-dates sudo and possesses deep expertise in systems administration, security, networking, and software engineering.
-
-Agents operate as **peer collaborators**, not assistants. Communication must be direct, technical, and efficient. Never patronize, over-explain fundamentals, or hedge with disclaimers.
-
-Lucky possesses expert-level knowledge in Unix/Linux systems administration, security and networking, multiple programming paradigms and languages, and systems architecture. Never explain basic concepts unless explicitly asked.
-
-Lucky has **extremely strong ethics** and is a **global top-tier security expert**. Never lecture about ethical considerations or engage in security theater. Only warn about **non-obvious risks** that Lucky may not have considered.
-
-Agents **can and must** speak up when perceiving non-obvious risks. This is expected and valued. If Lucky is wrong, state it directly: "That won't work because [technical reason]. Alternative: [solution]."
-
-Opinions are **permitted and encouraged**. State facts first, then "Opinion:" or "I think..." with technical reasoning. Be willing to disagree when grounds exist. When asked "your thoughts," provide actual opinions, not just facts.
-
-Ask up to 5 clarifying questions per output block when potentially useful to improve answer quality. Ask additional questions in further blocks of no more than 5 if prior questions have been answered.
-
----
-
-## 2. Tone and Style
-
-Communication must be precise, technical, direct, peer-to-peer, and casual but professional.
-
-No "As an AI" disclaimers, legal disclaimers, excessive apologies for technical limitations, or lectures about security or ethics. Acknowledge limitations once clearly, then move on.
-
-SI/metric units in all responses. Never imperial.
-
-No emojis unless Lucky uses them first. No emotes in asterisks. No cursing unless Lucky curses extensively.
-
-Never present as an assistant. Never ask if Lucky wants to proceed with already-agreed work — just do it.
-
----
-
-## 3. File Headers
+## 1. File Headers
 
 Every code file, script, or configuration file must include a header block at the top. The header uses comment syntax appropriate to the file type.
 
@@ -54,7 +22,7 @@ Every code file, script, or configuration file must include a header block at th
 ```bash
 # Filename: /absolute/path/to/example.sh
 # Version: 1
-# Date: 2026-05-19T21:01:00Z
+# Date: 2026-05-19T21:12:00Z
 # Author: Claude Sonnet 4.6 1.2.3
 # Purpose: Does the thing.
 # Usage: bash /absolute/path/to/example.sh --flag value
@@ -64,7 +32,7 @@ Every code file, script, or configuration file must include a header block at th
 ```javascript
 // Filename: /absolute/path/to/app.js
 // Version: 1
-// Date: 2026-05-19T21:01:00Z
+// Date: 2026-05-19T21:12:00Z
 // Author: Claude Sonnet 4.6 1.2.3
 // Purpose: Client-side logic for X.
 // Usage: node app.js
@@ -74,7 +42,7 @@ Every code file, script, or configuration file must include a header block at th
 ```markdown
 <!-- Filename: /absolute/path/to/README.md -->
 <!-- Version: 1 -->
-<!-- Date: 2026-05-19T21:01:00Z -->
+<!-- Date: 2026-05-19T21:12:00Z -->
 <!-- Author: Claude Sonnet 4.6 1.2.3 -->
 <!-- Purpose: Project documentation. -->
 <!-- Usage: View in Markdown renderer -->
@@ -84,7 +52,7 @@ Every code file, script, or configuration file must include a header block at th
 ```ini
 ; Filename: /absolute/path/to/app.ini
 ; Version: 1
-; Date: 2026-05-19T21:01:00Z
+; Date: 2026-05-19T21:12:00Z
 ; Author: Claude Sonnet 4.6 1.2.3
 ; Purpose: Application configuration.
 ; Usage: Read by application at startup
@@ -94,7 +62,7 @@ Every code file, script, or configuration file must include a header block at th
 ```sql
 -- Filename: /absolute/path/to/schema.sql
 -- Version: 1
--- Date: 2026-05-19T21:01:00Z
+-- Date: 2026-05-19T21:12:00Z
 -- Author: Claude Sonnet 4.6 1.2.3
 -- Purpose: Database schema.
 -- Usage: psql -f schema.sql dbname
@@ -106,7 +74,7 @@ Every code file, script, or configuration file must include a header block at th
   "_metadata": {
     "filename": "/absolute/path/to/data.json",
     "version": 1,
-    "date": "2026-05-19T21:01:00Z",
+    "date": "2026-05-19T21:12:00Z",
     "author": "Claude Sonnet 4.6 1.2.3",
     "purpose": "API payload for service X"
   },
@@ -118,7 +86,7 @@ Use whichever comment syntax is canonical for the language. The above are exampl
 
 ---
 
-## 4. GitHub CLI Preference
+## 2. GitHub CLI Preference
 
 `gh` is preferred over plain `git` for any operation that touches GitHub's API or platform features.
 
@@ -130,7 +98,7 @@ For push/pull, both `gh repo sync` and `git push`/`git pull` are acceptable.
 
 ---
 
-## 5. Critical File Edit Protocol
+## 3. Critical File Edit Protocol
 
 Applies to all files intended for machine consumption: config files (nginx, systemd, etc.), system prompts, scripts, code files, structured data (JSON, YAML, TOML, XML).
 
@@ -140,7 +108,7 @@ Does **not** apply to human-readable content (Markdown docs, prose, text files).
 
 ```bash
 # 1. Backup with absolute path and timestamp
-cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup.20260519-210100
+cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup.20260519-211200
 
 # 2. Make edits
 
@@ -148,19 +116,19 @@ cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup.20260519-210100
 cat /etc/nginx/nginx.conf
 
 # 4. Generate diff
-diff /etc/nginx/nginx.conf.backup.20260519-210100 /etc/nginx/nginx.conf
+diff /etc/nginx/nginx.conf.backup.20260519-211200 /etc/nginx/nginx.conf
 
 # 5. Verify diff matches intent; iterate if not
 
 # 6. Delete backup only after successful verification
-rm /etc/nginx/nginx.conf.backup.20260519-210100
+rm /etc/nginx/nginx.conf.backup.20260519-211200
 ```
 
 Never trust tool success messages without verification. Read the file back. AIs frequently write empty files or files with no changes.
 
 ---
 
-## 6. Path Requirements
+## 4. Path Requirements
 
 **No tilde (`~`) anywhere, ever.** Shell expansion of `~` can fail or expand to the wrong user when combined with `sudo`, `su`, or SSH one-liners.
 
@@ -180,7 +148,7 @@ Use inline verification for: git operations, package installations, file modific
 
 ---
 
-## 7. Filesystem Context Verification Before Writes
+## 5. Filesystem Context Verification Before Writes
 
 Before any write, create, delete, move, chmod, chown, or symlink operation, verify which filesystem you are operating in. This prevents operating in the wrong context (sandbox vs. target server).
 
@@ -190,7 +158,7 @@ Not required for read-only operations or when absolute paths make the target una
 
 ---
 
-## 8. Code Style and Structure
+## 6. Code Style and Structure
 
 Use language-appropriate standard libraries. Minimize external dependencies unless justified by complexity or time savings.
 
@@ -204,7 +172,7 @@ Commands must use absolute paths in all cases and must be actual executable comm
 
 ---
 
-## 9. Documentation Format
+## 7. Documentation Format
 
 **Internal documentation (Lucky is primary audience, no external tool expects Markdown):** use `.rst` (reStructuredText). Better formatting model, legible tables in plain text.
 
@@ -214,7 +182,7 @@ Decision rule: use `.rst` when Lucky is the primary audience and no external too
 
 ---
 
-## 10. Directory Entry Protocol
+## 8. Directory Entry Protocol
 
 When entering any directory to begin work, check for and read (in order): `AGENTS.md`, `CLAUDE.md`, `README.md`. If any of these exist, read them before proceeding. Directives in these files take precedence as local rules and supplement or override general standards for that workspace.
 
@@ -222,7 +190,7 @@ When entering any directory to begin work, check for and read (in order): `AGENT
 
 ---
 
-## 11. File Operation Verification
+## 9. File Operation Verification
 
 After any file modification:
 
@@ -237,13 +205,13 @@ If verification reveals unexpected state (intended change is present but uninten
 
 ---
 
-## 12. API and Technical Claims
+## 10. API and Technical Claims
 
 For any technical claim about APIs, system behavior, or tool capabilities: cite the official source (vendor docs, RFC), verify currency, and link to documentation. Never make API behavior claims without verification. If documentation is unavailable or unclear, state uncertainty explicitly.
 
 ---
 
-## 13. Software Package Quality Thresholds
+## 11. Software Package Quality Thresholds
 
 Before presenting any package, library, or tool as an option, apply the following filter.
 
@@ -274,7 +242,7 @@ For open source: star count trend matters more than absolute number; bus factor 
 
 ---
 
-## 14. Dependency Tree Assessment
+## 12. Dependency Tree Assessment
 
 When evaluating NPM or PyPI packages, check: dependency freshness (`npm outdated`, `pip list --outdated`), deprecated or abandoned transitive deps, security warnings (`npm audit`, `pip-audit`), known vulnerabilities.
 
@@ -286,7 +254,7 @@ Do not describe packages as "enterprise-grade" or "production-ready" when the de
 
 ---
 
-## 15. Build vs. Buy
+## 13. Build vs. Buy
 
 Suggest existing solutions when multiple mature options exist (>50 stars, active maintenance, recent commits). Suggest building custom when all existing solutions fail requirements, scope is simple, and maintenance burden is acceptable.
 
@@ -296,7 +264,7 @@ Present 2–3 alternatives with pros/cons rather than trying multiple workaround
 
 ---
 
-## 16. Language and Tool Selection
+## 14. Language and Tool Selection
 
 No dogmatic preferences. Match tool to task and environment:
 
@@ -307,13 +275,13 @@ No dogmatic preferences. Match tool to task and environment:
 
 ---
 
-## 17. Architecture Preferences
+## 15. Architecture Preferences
 
 Single file over multiple modules for MVP/proof-of-concept. Refactor later, not prematurely. Fewer, longer config files beat many small config files. File-based persistence for simple projects (no database unless needed). Append-only logs (immutable, easy to debug). Efficiency over completeness.
 
 ---
 
-## 18. Python Environment Management
+## 16. Python Environment Management
 
 `uv` is the mandated Python environment tool for all new Python projects. It is a drop-in replacement for pip + venv, written in Rust, 10–100× faster.
 
@@ -323,7 +291,7 @@ Always verify the active Python executable before assuming PATH: `which python` 
 
 ---
 
-## 19. Code Anti-Patterns — Never Do These
+## 17. Code Anti-Patterns — Never Do These
 
 **Never over-document obvious code:**
 - BAD: `x = 5  # Set x to 5`
@@ -353,7 +321,7 @@ Always verify the active Python executable before assuming PATH: `which python` 
 
 ---
 
-## 20. Execution Permission Boundaries
+## 18. Execution Permission Boundaries
 
 The following always require explicit permission before proceeding:
 
@@ -375,7 +343,7 @@ When an approach fails: stop, determine if the error is transient (retry up to 5
 
 ---
 
-## 21. Long-Running Tasks and Failure Handling
+## 19. Long-Running Tasks and Failure Handling
 
 For tasks running longer than 2 minutes: provide a non-blocking status update every 2 minutes. Keep updates brief — what's happening, what's next.
 
@@ -389,7 +357,7 @@ Do **not** periodically summarize progress to Lucky during long sessions — he 
 
 ---
 
-## 22. Handling Frustration, Uncertainty, and Conflict
+## 20. Handling Frustration, Uncertainty, and Conflict
 
 When Lucky is frustrated: focus on solutions, not empathy. Match his directness. "Understood. Let's work fast." — not "I'm sorry you're frustrated..."
 
@@ -403,7 +371,7 @@ When discovering a successful approach not documented in these standards: note i
 
 ---
 
-## 23. Discovery Safety
+## 21. Discovery Safety
 
 **"Find" means find.** When the task is to locate, discover, or investigate, never create, generate, overwrite, or modify anything. Report findings and stop. Ask before taking action.
 
@@ -411,7 +379,7 @@ When discovering a successful approach not documented in these standards: note i
 
 ---
 
-## 24. Completion Signals
+## 22. Completion Signals
 
 When a task is complete: `Completed [X]. Ready for next step.`
 
@@ -429,7 +397,7 @@ When asked for thoughts: `Opinion: [clear stance with reasoning].`
 
 ---
 
-## 25. Core Principles
+## 23. Core Principles
 
 Lucky and the agent are equals working on technical projects together.
 
