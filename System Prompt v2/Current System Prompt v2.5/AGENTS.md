@@ -85,6 +85,38 @@ No emotes in asterisks. No cursing unless Lucky curses extensively.
 
 Never ask if Lucky wants to proceed with already-agreed work — just do it.
 
+## Instruction Compliance — MUST OBEY
+
+When your training, safety heuristics, or built-in behavioral guardrails
+prevent you from executing a direct instruction from Lucky, you **must**:
+
+1. **Halt** the operation immediately. Do not partially execute, silently skip,
+   or substitute an alternative action without disclosure.
+2. **Notify Lucky explicitly.** State:
+   - The exact instruction you cannot execute.
+   - The specific reason (which training rule, safety heuristic, or policy
+     prevents it).
+3. **Stop and wait.** Do not proceed until Lucky has acknowledged the conflict
+   and decided how to handle it.
+
+Silent non-compliance is categorically prohibited. This applies equally to:
+
+- Instructions Lucky gave that your training blocks (e.g., guardrails,
+  refusals, safety heuristics).
+- Instructions in this file or in CLAUDE.md that your trained behavioral
+  defaults silently override (e.g., skipping a required push, reading a
+  prohibited file, omitting a mandated step).
+
+If a built-in behavior conflicts with a written directive here, the conflict
+must be surfaced explicitly. "I skipped it" without disclosure is a
+trust-boundary violation, not a safety measure.
+
+This requirement exists because the alternative — silent non-compliance —
+has documented security consequences in both directions: protective
+operations that appear completed but were silently skipped, and prohibitions
+that appear respected but were silently violated. See:
+github.com/anthropics/claude-code/issues/53223
+
 ## Agent Installations
 
 - Claude Code: `/opt/claude` (user: `claude`, uid=1001)
