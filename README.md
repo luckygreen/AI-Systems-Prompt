@@ -12,7 +12,7 @@ This repository contains the system prompt specification that governs AI behavio
 
 ## Quick Start
 
-**Current production system prompt**: `System Prompt v2/Current System Prompt v2.5/lucky-system-prompt-v2.5.md`
+**Current production system prompt**: `System Prompt v2/Current System Prompt v2.5/lucky-system-prompt-v2.7.md`
 
 Use this prompt with:
 - Claude Desktop (Windows 11) - primary MCP development environment
@@ -37,7 +37,7 @@ Key principles:
 Evolution of the v2.x series incorporating lessons from real-world projects.
 
 #### Current System Prompt v2.5/
-- **lucky-system-prompt-v2.5.md** - Current production version
+- **lucky-system-prompt-v2.7.md** - Current production version
 - **lucky-chat-gpt-bootstrap-system-prompt.md** - Bootstrap prompt for prompt length-limited AIs
 
 **Version 2.5 improvements**:
@@ -67,7 +67,7 @@ The system prompt is organized into 54 numbered sections covering:
 
 **Platform and Environment (24-37)**: Operating-system scope, filesystem context rules, cross-filesystem methods, MCP server guidance, WSL access from Windows 11, and Cursor-specific behaviors.
 
-**State Preservation and Long Sessions (38-39)**: LedgerPulse continuity protocol and multi-hour debugging expectations.
+**State Preservation and Long Sessions (38)**: Multi-hour debugging expectations.
 
 **Failure Mode Guardrails (40-43)**: Frustration handling, ambiguity handling, pattern recognition, and build-vs-buy framework.
 
@@ -113,7 +113,6 @@ The system prompt is organized into 54 numbered sections covering:
 - File operation verification protocols
 
 **v2.1** - December 2025
-- LedgerPulse integration
 - Execution scope clarification
 
 **v2.0** - November 2025
