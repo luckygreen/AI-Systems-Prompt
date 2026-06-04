@@ -216,8 +216,3 @@ skills directory.
 - Version query: `codex --version` if available; otherwise use "Codex Desktop"
 - Author field: output of version query
 
-### Roo Code
-
-**OBSOLETE — Roo Code reached end of life on 2026-05-15.**
-`lucky-admin-mode.yaml` in this directory is retained for historical reference only.
-Do not use, reference, or attempt to configure Roo Code.
