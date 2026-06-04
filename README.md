@@ -16,7 +16,7 @@ This repository contains the system prompt specification that governs AI behavio
 
 Use this prompt with:
 - Claude Desktop (Windows 11) - primary MCP development environment
-- Roo Code (Windows 11) - limited MCP usage to conserve tokens
+- Claude Code (WSL Ubuntu-24.04) - primary coding environment
 - OpenCode (Linux servers) - production infrastructure
 
 ## Philosophy
