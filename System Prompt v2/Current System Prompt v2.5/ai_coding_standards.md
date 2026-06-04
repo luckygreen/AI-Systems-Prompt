@@ -1,6 +1,6 @@
 # AI Coding Standards — Lucky's Infrastructure
 <!-- Filename: ai_coding_standards.md -->
-<!-- Version: 3 -->
+<!-- Version: 4 -->
 <!-- Date: 2026-05-19T21:12:00Z -->
 <!-- Author: Claude Sonnet 4.6 -->
 <!-- Purpose: Coding and operational standards for all agents on this host.
@@ -174,11 +174,9 @@ Commands must use absolute paths in all cases and must be actual executable comm
 
 ## 7. Documentation Format
 
-**Internal documentation (Lucky is primary audience, no external tool expects Markdown):** use `.rst` (reStructuredText). Better formatting model, legible tables in plain text.
+Use `.md` (Markdown) for all documentation. This applies to both internal docs where Lucky is the primary audience and external/ecosystem documentation.
 
-**External / ecosystem documentation:** use `.md` (Markdown). README files for GitHub, MCP project docs, open source contributions.
-
-Decision rule: use `.rst` when Lucky is the primary audience and no external tool scans for `.md`; use `.md` when GitHub or ecosystem tooling is involved.
+Previously `.rst` was used for internal docs but this was dropped due to tooling friction. `.md` is now the universal default.
 
 ---
 
