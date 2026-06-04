@@ -145,8 +145,8 @@ any file, or running any command that modifies filesystem state.
 Platform-specific paths to this file:
 
 - **Linux/WSL**: `/etc/ai_coding_standards.md` (symlink to repo copy)
-- **Win11**: `C:\Users\Test\Documents\GitHub\AI-Systems-Prompt\System Prompt v2\Current System Prompt v2.5\ai_coding_standards.md`
-- **WSL accessing Win11**: `/mnt/c/Users/Test/Documents/GitHub/AI-Systems-Prompt/System Prompt v2/Current System Prompt v2.5/ai_coding_standards.md`
+- **Win11**: `C:\Users\Test\Documents\GitHub\AI-Systems-Prompt\System Prompt v2\Current System Prompt v2.7\ai_coding_standards.md`
+- **WSL accessing Win11**: `/mnt/c/Users/Test/Documents/GitHub/AI-Systems-Prompt/System Prompt v2/Current System Prompt v2.7/ai_coding_standards.md`
 
 The standards cover file headers, path requirements, code style, documentation
 format, package quality thresholds, verification requirements, and execution
@@ -183,7 +183,7 @@ Skills are shared across both agents via symlink:
     /opt/codex/skills  →  /mnt/c/Users/Test/.claude/skills
     ~/.agents/skills   →  /opt/codex/skills          (codex user)
 
-Skills source of truth: `C:\Users\Test\Documents\GitHub\agent-skills\`
+Skills source of truth: `C:\Users\Test\Documents\GitHub\Agents-Skills\`
 Skills are individually linked — do NOT symlink or junction the entire
 skills directory.
 
