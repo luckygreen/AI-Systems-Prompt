@@ -1,12 +1,12 @@
 # AI Coding Standards — Operator Infrastructure
-<!-- Filename: /mnt/data/ai_coding_standards.md -->
-<!-- Version: 9 -->
-<!-- Date: 2026-07-04T16:17:36Z -->
-<!-- Author: GPT-5.5 Thinking -->
+<!-- Filename: C:\Users\Test\Documents\GitHub\System-Prompt-AIs\System Prompt v2\Current System Prompt v2.7\ai_coding_standards.md -->
+<!-- Version: 10 -->
+<!-- Date: 2026-07-07T13:16:25Z -->
+<!-- Author: Kilo Code openai/gpt-5.5; Codex version could not be determined -->
 <!-- Purpose: Coding and operational standards for infrastructure agents.
-     Defines file, GitHub, path, Python, verification, and evidence-gate rules.
+     Defines file, GitHub transport, path, Python, verification, and evidence-gate rules.
      Applies to Linux, Windows, and cross-platform work unless scoped otherwise. -->
-<!-- Usage: Human-readable Markdown document; attach or read as the active coding standards for agent work. -->
+<!-- Usage: Human-readable Markdown document; read as the active coding standards for agent work. -->
 
 ---
 
@@ -103,23 +103,19 @@ Use whichever comment syntax is canonical for the language. Never use hash comme
 
 ---
 
-## 2. GitHub CLI Is Mandatory for GitHub Network Operations
+## 2. GitHub Platform and Git Transport Rules
 
-The GitHub CLI `gh` is mandatory for every network interaction with GitHub.
+Use `gh` for GitHub platform operations, GitHub API operations, authentication setup and status, repository owner/repository path verification, issue operations, pull-request operations, release operations, and other GitHub-specific non-Git operations.
 
-This includes repository creation, cloning, viewing, synchronization, pull-request operations, issue operations, release operations, API calls, and any operation that reads or writes network state from a GitHub remote.
+Use `git` for normal Git repository operations on an existing local checkout. This includes local state inspection, staging, commits, logs, branches, merges, and ordinary Git transport operations such as `git fetch`, `git pull --ff-only`, and `git push` to the configured remote.
 
-Do not use plain `git` for GitHub network operations. Prohibited when the remote endpoint is GitHub:
+Do not emulate normal Git push, pull, or fetch by using `gh api` Git Database blob, tree, commit, or ref mutation unless the operator explicitly approves custom automation for a specific task.
 
-```text
-git pull
-git push
-git fetch from a GitHub remote
-```
+Before any commit, verify Git author name and email are exactly `luckygreen` and `shamrock@cypherpunks.to`.
 
-Use plain `git` only for local repository state and local repository operations, such as `git status`, `git diff`, `git add`, `git commit`, `git log`, `git branch`, `git checkout`, `git merge --ff-only from a local clone or local path`, and `git fetch from a local path`.
+Before any GitHub remote transport operation, verify the configured remote URL and GitHub owner/repository path.
 
-If GitHub network state must be synchronized locally, use `gh repo clone`, `gh repo sync`, or `gh api` as appropriate. If a command must then update another local checkout, use `git` only against a local clone or local path, not a GitHub remote.
+`gh repo sync` is not a normal replacement for `git pull` or `git push` in this environment.
 
 If `gh` requires an owner/repo identifier and only a shorthand repo name is known, prefer:
 
@@ -129,7 +125,7 @@ If `gh` requires an owner/repo identifier and only a shorthand repo name is know
 
 Use the verified absolute path to the `gh` executable in the target environment. Do not use `gh api user` to infer a repository owner unless explicitly asked. `gh api user` identifies the authenticated account, not the owner of the target repository, and can cause operations against the wrong namespace when organizations, service accounts, or multiple owners are involved.
 
-Before finalizing any GitHub workflow, verify that no `git pull`, `git push`, or GitHub-remote `git fetch` was used. Review `git remote -v` when there is any doubt about whether a remote points to GitHub.
+Before finalizing any GitHub workflow, verify that `gh` was used for GitHub platform/API/authentication/repository-path operations, `git` was used for ordinary repository state or transport operations, and no unapproved `gh api` Git Database mutation emulated a normal Git transport operation. Review `git remote -v` before GitHub remote transport when there is any doubt about the configured remote.
 
 ---
 
@@ -415,7 +411,7 @@ Applicable checks must be mechanical, not trust-based. Mandatory examples includ
 - LF-only validation for Secrets files before and after edit.
 - Header and provenance validation before finalizing a file.
 - `git diff` and `git status` review before any commit.
-- Verification that no `git pull`, `git push`, or GitHub-remote `git fetch` was used when GitHub network interaction was required.
+- Verification that GitHub platform/API/authentication/repository-path operations used `gh`, ordinary repository state or transport operations used `git`, and no unapproved `gh api` Git Database mutation emulated normal Git transport.
 - Ownership and mode checks after `chown` or `chmod`, for example `/usr/bin/stat -c '%U:%G %a %n' /absolute/path`.
 - setgid directory checks when group inheritance is required, for example confirming mode `2770` or equivalent.
 - Service config validation before restart where a validator exists.
