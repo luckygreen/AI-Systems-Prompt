@@ -19,3 +19,4 @@
 # Allow only Markdown files under the system prompt tree.
 !System Prompt v2/*.md
 !System Prompt v2/**/*.md
+!.gitattributes
