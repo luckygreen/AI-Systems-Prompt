@@ -1,1 +1,7 @@
+# Filename: C:\Users\Test\Documents\GitHub\System-Prompt-AIs\.gitattributes
+# Version: 1
+# Date: 2026-07-16T19:43:25Z
+# Author: Claude Sonnet 4.6
+# Purpose: Enforces consistent LF line endings for all files in the repository.
+# Usage: Read by Git on checkout and commit to normalize line endings.
 * text=auto eol=lf

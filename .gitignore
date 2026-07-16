@@ -1,7 +1,7 @@
 # Filename: C:\Users\Test\Documents\GitHub\System-Prompt-AIs\.gitignore
-# Version: 1
-# Date: 2026-07-07T13:16:25Z
-# Author: Kilo Code openai/gpt-5.5; Codex version could not be determined
+# Version: 2
+# Date: 2026-07-16T19:43:25Z
+# Author: Claude Sonnet 4.6
 # Purpose: Restricts repository tracking to root docs and Markdown system prompts.
 # Usage: Read by Git ignore matching in the repository root.
 
